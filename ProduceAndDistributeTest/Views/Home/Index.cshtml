@@ -1,0 +1,75 @@
+﻿@model ProduceAndDistributeTest.Models.Setup
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Produce and Distribute Test</title>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />    
+</head>
+<body class="p-1">
+    <h1 class="text-center">Производство, складирование и доставка</h1>
+    <div style="margin:auto; width:fit-content">
+        <form name="setupForm" onsubmit="return onValidateSetup()" asp-action="ValidateSetup" method="post">
+            <div asp-validation-summary="All"></div>
+            <table style="margin:auto">
+                <tr>
+                    <td style="padding-right: 40px; padding-top: 20px; padding-bottom: 20px">
+                        <label asp-for="FactoriesCount">Количество фабрик:</label><br />
+                        <input class="input" asp-for="FactoriesCount" /><br />
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>
+                                    <label asp-for="M">M = </label>
+                                </td>
+                                <td>
+                                    <input class="input" asp-for="M" /><br />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label asp-for="n">n = </label>
+                                </td>
+                                <td>
+                                    <input class="input" asp-for="n" /><br />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="padding-left: 40px">
+                        <label asp-for="TrucksTypesCount">Количество типов грузовиков:</label><br />
+                        <input class="input" asp-for="TrucksTypesCount" /><br />
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="3" style="text-align:center">
+                        <label asp-for="Duration">Количество циклов: </label>
+                        <input class="input" asp-for="Duration" />
+                        <button id="btnStart" class="btn btn-primary" type="submit">Запустить процесс!</button>
+                    </th>
+                </tr>
+            </table>
+        </form>
+        <table style="width:100%">
+            <tr>
+                <td style="padding-right: 20px">
+                    <div id="stockJournal" style="margin:auto; width:fit-content">
+                    </div>
+                </td>
+                <td style="vertical-align:top">
+                    <div id="deliveryStatistic" style="margin:auto; 0px; width:fit-content">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
